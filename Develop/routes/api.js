@@ -37,3 +37,13 @@ router.get("/api/workouts", (req, res) => {
       res.json(err);
     });
 });
+
+//past 7 workouts
+router.get('/api/workouts/range', (req, res) => {
+    Workout.find({}).limit(7).then((dbWorkout) => {
+        res.json(dbWorkout);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+})
